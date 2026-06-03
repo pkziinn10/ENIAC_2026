@@ -54,10 +54,9 @@ All models are evaluated under **Time Series Cross-Validation** using `TimeSerie
 The study evaluates models from three paradigms:
 
 #### 1. Statistical Models (baseline)
-Implemented via R (`analise_series_temporais_varejo.Rmd`):
+Implemented in Python (`estatisticos.ipynb`) using the `sktime` library:
 - **AutoARIMA**: Automatic order selection for ARIMA(p,d,q) models.
 - **AutoETS**: Exponential smoothing with automated component selection.
-- **Prophet**: Facebook's additive regression model for time series with seasonality.
 
 #### 2. Machine Learning Models
 Implemented in `treinamento_modelos_ML.ipynb`:
@@ -78,37 +77,34 @@ Both neural architectures receive exogenous features as `past_covariates` and un
 
 ## Results
 
-The table below consolidates the performance metrics (MAE and SMAPE) obtained under the holdout evaluation protocol described in the article:
+The table below consolidates the performance metrics (MAE and RMSE) obtained under the holdout evaluation protocol described in the article:
 
-| Model      | Category         | Series   | MAE        | SMAPE (%) |
+| Model      | Category         | Series   | MAE        | RMSE      |
 |------------|------------------|----------|------------|-----------|
-| AutoARIMA  | Statistical      | Product  | 89.02      | 85.20     |
-| AutoARIMA  | Statistical      | Country  | 5,730.16   | 76.91     |
-| AutoARIMA  | Statistical      | Customer | 438.49     | 129.91    |
-| AutoETS    | Statistical      | Product  | 77.86      | 85.01     |
-| AutoETS    | Statistical      | Country  | 4,161.46   | 69.58     |
-| AutoETS    | Statistical      | Customer | 454.24     | 133.34    |
-| Prophet    | Statistical      | Product  | 79.91      | 84.13     |
-| Prophet    | Statistical      | Country  | 5,843.69   | 73.44     |
-| Prophet    | Statistical      | Customer | 451.20     | 126.17    |
-| XGBoost    | Machine Learning | Product  | 110.68     | 47.72     |
-| XGBoost    | Machine Learning | Country  | 20,591.53  | 166.80    |
-| XGBoost    | Machine Learning | Customer | 421.14     | 112.82    |
-| CatBoost   | Machine Learning | Product  | 109.84     | 47.60     |
-| CatBoost   | Machine Learning | Country  | 21,530.75  | 181.50    |
-| CatBoost   | Machine Learning | Customer | 417.40     | 173.10    |
-| TCN        | Deep Learning    | Product  | 110.74     | 46.77     |
-| TCN        | Deep Learning    | Country  | 9,328.11   | 49.44     |
-| TCN        | Deep Learning    | Customer | 409.54     | 147.44    |
-| LSTM       | Deep Learning    | Product  | 126.27     | 54.58     |
-| LSTM       | Deep Learning    | Country  | 10,163.89  | 56.13     |
-| LSTM       | Deep Learning    | Customer | 405.88     | 164.11    |
+| AutoARIMA  | Statistical      | Product  | 97.82      | 120.80    |
+| AutoARIMA  | Statistical      | Country  | 6,865.28   | 8,313.52  |
+| AutoARIMA  | Statistical      | Customer | 610.62     | 672.19    |
+| AutoETS    | Statistical      | Product  | 125.32     | 146.55    |
+| AutoETS    | Statistical      | Country  | 6,872.95   | 8,319.82  |
+| AutoETS    | Statistical      | Customer | 522.39     | 591.22    |
+| XGBoost    | Machine Learning | Product  | 97.20      | 119.92    |
+| XGBoost    | Machine Learning | Country  | 2,276.79   | 2,945.49  |
+| XGBoost    | Machine Learning | Customer | 93.29      | 218.07    |
+| CatBoost   | Machine Learning | Product  | 94.20      | 117.33    |
+| CatBoost   | Machine Learning | Country  | 2,339.87   | 3,046.38  |
+| CatBoost   | Machine Learning | Customer | 99.23      | 237.82    |
+| TCN        | Deep Learning    | Product  | 97.29      | 122.07    |
+| TCN        | Deep Learning    | Country  | 3,704.56   | 4,712.20  |
+| TCN        | Deep Learning    | Customer | 475.44     | 665.59    |
+| LSTM       | Deep Learning    | Product  | 95.32      | 117.96    |
+| LSTM       | Deep Learning    | Country  | 4,096.80   | 5,298.72  |
+| LSTM       | Deep Learning    | Customer | 394.62     | 556.97    |
 
 ### Key Findings
 
-- **Statistical models** (AutoETS, Prophet) achieved the lowest MAE for the Product and Customer series, suggesting that classical decomposition methods remain competitive when the underlying temporal structure is well-defined.
-- **Machine Learning models** (XGBoost, CatBoost) achieved substantially lower SMAPE values for the Product series, indicating superior proportional accuracy at the item level.
-- **Deep Learning models** (TCN, LSTM) demonstrated the best SMAPE performance for the Country series, where long-range dependencies and complex seasonal interactions are more pronounced.
+- **Machine Learning models** (XGBoost, CatBoost) achieved the lowest MAE across practically all granularity levels, dominating especially in the Country and Customer series. This demonstrates their capability in capturing non-linear relationships and efficiently handling the engineered tabular features.
+- **Deep Learning models** (TCN, LSTM) showed highly competitive performance, closely following the tree-based models and outperforming classical statistical approaches.
+- **Statistical models** (AutoARIMA, AutoETS) struggled to maintain parity, presenting the highest error metrics in the Country and Customer series, suggesting that simple univariate temporal patterns are insufficient compared to rich feature sets.
 
 ---
 
@@ -121,19 +117,19 @@ revenue_estimate/
 └── src/
     ├── limpeza_de_dados.ipynb              # Data cleaning and preprocessing
     ├── engenharia_de_atributos.ipynb       # Feature engineering (SHAP-guided, leakage-free)
-    ├── analise_series_temporais_varejo.Rmd # Statistical models (AutoARIMA, AutoETS, Prophet)
+    ├── estatisticos.ipynb                  # Statistical models (AutoARIMA, AutoETS via sktime)
     ├── treinamento_modelos_ML.ipynb        # ML models (XGBoost, CatBoost + Optuna)
     ├── treinamento_modelos_DL.ipynb        # DL models (BlockRNN/LSTM, TCN via Darts)
     ├── requirements.txt                    # Python dependencies
     ├── data/
     │   ├── product.csv                     # Daily series aggregated by product
     │   ├── country.csv                     # Daily series aggregated by country
-    │   ├── customer.csv                    # Daily series aggregated by customer
-    │   └── resultados_modelos.csv          # Consolidated results across all models
+    │   └── customer.csv                    # Daily series aggregated by customer
+    ├── resultados/
+    │   ├── resultados_estatisticos.csv     # Metrics and forecasts for Statistical models
+    │   ├── resultados_ML.csv               # Metrics and forecasts for ML models
+    │   └── resultados_DL.csv               # Metrics and forecasts for DL models
     └── models/
-        ├── result_json/
-        │   ├── resultados_ml.json          # XGBoost and CatBoost metrics
-        │   └── resultados_dl.json          # LSTM and TCN metrics
         └── result_pkl/
             ├── xgb_*.pkl                   # Serialized XGBoost models
             ├── cat_*.pkl                   # Serialized CatBoost models
@@ -148,7 +144,6 @@ revenue_estimate/
 ### Prerequisites
 
 - Python 3.13+
-- R 4.x (for statistical models only)
 - CUDA-compatible GPU (recommended for deep learning models)
 
 ### Setup
@@ -164,7 +159,7 @@ pip install -r requirements.txt
 
 1. `limpeza_de_dados.ipynb` -- Generates cleaned transactional data.
 2. `engenharia_de_atributos.ipynb` -- Produces feature-enriched datasets.
-3. `analise_series_temporais_varejo.Rmd` -- Trains and evaluates statistical baselines (R environment required).
+3. `estatisticos.ipynb` -- Trains and evaluates statistical baselines.
 4. `treinamento_modelos_ML.ipynb` -- Trains XGBoost and CatBoost with Optuna optimization.
 5. `treinamento_modelos_DL.ipynb` -- Trains BlockRNN (LSTM) and TCN via Darts.
 
@@ -175,7 +170,7 @@ pip install -r requirements.txt
 | Component              | Technology                                    |
 |------------------------|-----------------------------------------------|
 | Data manipulation      | Pandas, NumPy                                 |
-| Statistical models     | R (forecast, prophet)                         |
+| Statistical models     | sktime, pmdarima, statsmodels                 |
 | ML models              | XGBoost, CatBoost                             |
 | Hyperparameter tuning  | Optuna                                        |
 | DL framework           | Darts (PyTorch Lightning backend)             |
