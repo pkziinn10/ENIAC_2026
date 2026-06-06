@@ -54,7 +54,7 @@ All models are evaluated under **Time Series Cross-Validation** using `TimeSerie
 The study evaluates models from three paradigms:
 
 #### 1. Statistical Models (baseline)
-Implemented in Python (`estatisticos.ipynb`) using the `sktime` library:
+Implemented in Python (`treinamento_estatisticos.ipynb`) using the `sktime` library:
 - **AutoARIMA**: Automatic order selection for ARIMA(p,d,q) models.
 - **AutoETS**: Exponential smoothing with automated component selection.
 
@@ -117,18 +117,27 @@ revenue_estimate/
 └── src/
     ├── limpeza_de_dados.ipynb              # Data cleaning and preprocessing
     ├── engenharia_de_atributos.ipynb       # Feature engineering (SHAP-guided, leakage-free)
-    ├── estatisticos.ipynb                  # Statistical models (AutoARIMA, AutoETS via sktime)
+    ├── analise_exploratoria.Rmd            # Exploratory Data Analysis
+    ├── treinamento_naive.ipynb             # Baseline naive models
+    ├── treinamento_estatisticos.ipynb      # Statistical models (AutoARIMA, AutoETS via sktime)
     ├── treinamento_modelos_ML.ipynb        # ML models (XGBoost, CatBoost + Optuna)
     ├── treinamento_modelos_DL.ipynb        # DL models (BlockRNN/LSTM, TCN via Darts)
+    ├── LLMs.ipynb                          # LLMs evaluation
+    ├── teste_wilcoxon.ipynb                # Wilcoxon signed-rank statistical test
+    ├── xlsx_to_csv.ipynb                   # Utility for data conversion
     ├── requirements.txt                    # Python dependencies
     ├── data/
     │   ├── product.csv                     # Daily series aggregated by product
     │   ├── country.csv                     # Daily series aggregated by country
     │   └── customer.csv                    # Daily series aggregated by customer
     ├── resultados/
+    │   ├── resultados_naive.csv            # Metrics and forecasts for Naive models
     │   ├── resultados_estatisticos.csv     # Metrics and forecasts for Statistical models
     │   ├── resultados_ML.csv               # Metrics and forecasts for ML models
-    │   └── resultados_DL.csv               # Metrics and forecasts for DL models
+    │   ├── resultados_DL.csv               # Metrics and forecasts for DL models
+    │   ├── resultados_LLMs.csv             # Metrics and forecasts for LLMs
+    │   ├── resultados_medias_LLMs.csv      # Average metrics for LLMs
+    │   └── resultado_wilcoxon.txt          # Statistical significance comparisons
     └── models/
         └── result_pkl/
             ├── xgb_*.pkl                   # Serialized XGBoost models
@@ -159,9 +168,12 @@ pip install -r requirements.txt
 
 1. `limpeza_de_dados.ipynb` -- Generates cleaned transactional data.
 2. `engenharia_de_atributos.ipynb` -- Produces feature-enriched datasets.
-3. `estatisticos.ipynb` -- Trains and evaluates statistical baselines.
-4. `treinamento_modelos_ML.ipynb` -- Trains XGBoost and CatBoost with Optuna optimization.
-5. `treinamento_modelos_DL.ipynb` -- Trains BlockRNN (LSTM) and TCN via Darts.
+3. `treinamento_naive.ipynb` -- Generates simple baselines.
+4. `treinamento_estatisticos.ipynb` -- Trains and evaluates statistical models.
+5. `treinamento_modelos_ML.ipynb` -- Trains XGBoost and CatBoost with Optuna optimization.
+6. `treinamento_modelos_DL.ipynb` -- Trains BlockRNN (LSTM) and TCN via Darts.
+7. `LLMs.ipynb` -- Evaluates LLMs approach.
+8. `teste_wilcoxon.ipynb` -- Executes the statistical hypothesis tests between the best models.
 
 ---
 
