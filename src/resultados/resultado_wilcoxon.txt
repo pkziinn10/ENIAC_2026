@@ -1,0 +1,617 @@
+
+========================================
+=== Analisando: Erro Absoluto - Produto ===
+========================================
+
+
+Comparando XGBoost x CatBoost:
+	- Amostras (n): 71
+	- Média Erro XGBoost: 83.7614
+	- Média Erro CatBoost: 75.3810
+	- Estatística Z/W: 1078.0000
+	- Valor-p (p-value): 0.2518
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando XGBoost x LSTM:
+	- Amostras (n): 71
+	- Média Erro XGBoost: 83.7614
+	- Média Erro LSTM: 93.8092
+	- Estatística Z/W: 1115.0000
+	- Valor-p (p-value): 0.3503
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando XGBoost x TCN:
+	- Amostras (n): 71
+	- Média Erro XGBoost: 83.7614
+	- Média Erro TCN: 132.9330
+	- Estatística Z/W: 852.0000
+	- Valor-p (p-value): 0.0147
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): XGBoost
+----------------------------------------
+
+Comparando XGBoost x AutoARIMA:
+	- Amostras (n): 71
+	- Média Erro XGBoost: 83.7614
+	- Média Erro AutoARIMA: 73.9554
+	- Estatística Z/W: 862.0000
+	- Valor-p (p-value): 0.0171
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): AutoARIMA
+----------------------------------------
+
+Comparando XGBoost x AutoETS:
+	- Amostras (n): 71
+	- Média Erro XGBoost: 83.7614
+	- Média Erro AutoETS: 105.0487
+	- Estatística Z/W: 446.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): XGBoost
+----------------------------------------
+
+Comparando XGBoost x Prophet:
+	- Amostras (n): 71
+	- Média Erro XGBoost: 83.7614
+	- Média Erro Prophet: 82.7528
+	- Estatística Z/W: 1233.0000
+	- Valor-p (p-value): 0.7965
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando CatBoost x LSTM:
+	- Amostras (n): 71
+	- Média Erro CatBoost: 75.3810
+	- Média Erro LSTM: 93.8092
+	- Estatística Z/W: 909.0000
+	- Valor-p (p-value): 0.0345
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): CatBoost
+----------------------------------------
+
+Comparando CatBoost x TCN:
+	- Amostras (n): 71
+	- Média Erro CatBoost: 75.3810
+	- Média Erro TCN: 132.9330
+	- Estatística Z/W: 671.0000
+	- Valor-p (p-value): 0.0005
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): CatBoost
+----------------------------------------
+
+Comparando CatBoost x AutoARIMA:
+	- Amostras (n): 71
+	- Média Erro CatBoost: 75.3810
+	- Média Erro AutoARIMA: 73.9554
+	- Estatística Z/W: 1220.0000
+	- Valor-p (p-value): 0.7396
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando CatBoost x AutoETS:
+	- Amostras (n): 71
+	- Média Erro CatBoost: 75.3810
+	- Média Erro AutoETS: 105.0487
+	- Estatística Z/W: 668.0000
+	- Valor-p (p-value): 0.0005
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): CatBoost
+----------------------------------------
+
+Comparando CatBoost x Prophet:
+	- Amostras (n): 71
+	- Média Erro CatBoost: 75.3810
+	- Média Erro Prophet: 82.7528
+	- Estatística Z/W: 997.0000
+	- Valor-p (p-value): 0.1074
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando LSTM x TCN:
+	- Amostras (n): 71
+	- Média Erro LSTM: 93.8092
+	- Média Erro TCN: 132.9330
+	- Estatística Z/W: 874.0000
+	- Valor-p (p-value): 0.0206
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): LSTM
+----------------------------------------
+
+Comparando LSTM x AutoARIMA:
+	- Amostras (n): 71
+	- Média Erro LSTM: 93.8092
+	- Média Erro AutoARIMA: 73.9554
+	- Estatística Z/W: 892.0000
+	- Valor-p (p-value): 0.0270
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): AutoARIMA
+----------------------------------------
+
+Comparando LSTM x AutoETS:
+	- Amostras (n): 71
+	- Média Erro LSTM: 93.8092
+	- Média Erro AutoETS: 105.0487
+	- Estatística Z/W: 1122.0000
+	- Valor-p (p-value): 0.3714
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando LSTM x Prophet:
+	- Amostras (n): 71
+	- Média Erro LSTM: 93.8092
+	- Média Erro Prophet: 82.7528
+	- Estatística Z/W: 1095.0000
+	- Valor-p (p-value): 0.2944
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando TCN x AutoARIMA:
+	- Amostras (n): 71
+	- Média Erro TCN: 132.9330
+	- Média Erro AutoARIMA: 73.9554
+	- Estatística Z/W: 653.0000
+	- Valor-p (p-value): 0.0003
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): AutoARIMA
+----------------------------------------
+
+Comparando TCN x AutoETS:
+	- Amostras (n): 71
+	- Média Erro TCN: 132.9330
+	- Média Erro AutoETS: 105.0487
+	- Estatística Z/W: 1116.0000
+	- Valor-p (p-value): 0.3533
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando TCN x Prophet:
+	- Amostras (n): 71
+	- Média Erro TCN: 132.9330
+	- Média Erro Prophet: 82.7528
+	- Estatística Z/W: 872.0000
+	- Valor-p (p-value): 0.0200
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): Prophet
+----------------------------------------
+
+Comparando AutoARIMA x AutoETS:
+	- Amostras (n): 71
+	- Média Erro AutoARIMA: 73.9554
+	- Média Erro AutoETS: 105.0487
+	- Estatística Z/W: 515.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): AutoARIMA
+----------------------------------------
+
+Comparando AutoARIMA x Prophet:
+	- Amostras (n): 71
+	- Média Erro AutoARIMA: 73.9554
+	- Média Erro Prophet: 82.7528
+	- Estatística Z/W: 1002.0000
+	- Valor-p (p-value): 0.1138
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando AutoETS x Prophet:
+	- Amostras (n): 71
+	- Média Erro AutoETS: 105.0487
+	- Média Erro Prophet: 82.7528
+	- Estatística Z/W: 561.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): Prophet
+----------------------------------------
+
+========================================
+=== Analisando: Erro Absoluto - País ===
+========================================
+
+
+Comparando XGBoost x CatBoost:
+	- Amostras (n): 72
+	- Média Erro XGBoost: 7761.2293
+	- Média Erro CatBoost: 4892.3550
+	- Estatística Z/W: 775.0000
+	- Valor-p (p-value): 0.0025
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): CatBoost
+----------------------------------------
+
+Comparando XGBoost x LSTM:
+	- Amostras (n): 72
+	- Média Erro XGBoost: 7761.2293
+	- Média Erro LSTM: 5627.2334
+	- Estatística Z/W: 948.0000
+	- Valor-p (p-value): 0.0400
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): LSTM
+----------------------------------------
+
+Comparando XGBoost x TCN:
+	- Amostras (n): 72
+	- Média Erro XGBoost: 7761.2293
+	- Média Erro TCN: 19234.4844
+	- Estatística Z/W: 433.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): XGBoost
+----------------------------------------
+
+Comparando XGBoost x AutoARIMA:
+	- Amostras (n): 72
+	- Média Erro XGBoost: 7761.2293
+	- Média Erro AutoARIMA: 10124.4553
+	- Estatística Z/W: 869.0000
+	- Valor-p (p-value): 0.0125
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): XGBoost
+----------------------------------------
+
+Comparando XGBoost x AutoETS:
+	- Amostras (n): 72
+	- Média Erro XGBoost: 7761.2293
+	- Média Erro AutoETS: 14872.0377
+	- Estatística Z/W: 330.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): XGBoost
+----------------------------------------
+
+Comparando XGBoost x Prophet:
+	- Amostras (n): 72
+	- Média Erro XGBoost: 7761.2293
+	- Média Erro Prophet: 9738.6275
+	- Estatística Z/W: 950.0000
+	- Valor-p (p-value): 0.0411
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): XGBoost
+----------------------------------------
+
+Comparando CatBoost x LSTM:
+	- Amostras (n): 72
+	- Média Erro CatBoost: 4892.3550
+	- Média Erro LSTM: 5627.2334
+	- Estatística Z/W: 1250.0000
+	- Valor-p (p-value): 0.7195
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando CatBoost x TCN:
+	- Amostras (n): 72
+	- Média Erro CatBoost: 4892.3550
+	- Média Erro TCN: 19234.4844
+	- Estatística Z/W: 157.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): CatBoost
+----------------------------------------
+
+Comparando CatBoost x AutoARIMA:
+	- Amostras (n): 72
+	- Média Erro CatBoost: 4892.3550
+	- Média Erro AutoARIMA: 10124.4553
+	- Estatística Z/W: 266.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): CatBoost
+----------------------------------------
+
+Comparando CatBoost x AutoETS:
+	- Amostras (n): 72
+	- Média Erro CatBoost: 4892.3550
+	- Média Erro AutoETS: 14872.0377
+	- Estatística Z/W: 69.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): CatBoost
+----------------------------------------
+
+Comparando CatBoost x Prophet:
+	- Amostras (n): 72
+	- Média Erro CatBoost: 4892.3550
+	- Média Erro Prophet: 9738.6275
+	- Estatística Z/W: 299.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): CatBoost
+----------------------------------------
+
+Comparando LSTM x TCN:
+	- Amostras (n): 72
+	- Média Erro LSTM: 5627.2334
+	- Média Erro TCN: 19234.4844
+	- Estatística Z/W: 91.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): LSTM
+----------------------------------------
+
+Comparando LSTM x AutoARIMA:
+	- Amostras (n): 72
+	- Média Erro LSTM: 5627.2334
+	- Média Erro AutoARIMA: 10124.4553
+	- Estatística Z/W: 356.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): LSTM
+----------------------------------------
+
+Comparando LSTM x AutoETS:
+	- Amostras (n): 72
+	- Média Erro LSTM: 5627.2334
+	- Média Erro AutoETS: 14872.0377
+	- Estatística Z/W: 175.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): LSTM
+----------------------------------------
+
+Comparando LSTM x Prophet:
+	- Amostras (n): 72
+	- Média Erro LSTM: 5627.2334
+	- Média Erro Prophet: 9738.6275
+	- Estatística Z/W: 420.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): LSTM
+----------------------------------------
+
+Comparando TCN x AutoARIMA:
+	- Amostras (n): 72
+	- Média Erro TCN: 19234.4844
+	- Média Erro AutoARIMA: 10124.4553
+	- Estatística Z/W: 369.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): AutoARIMA
+----------------------------------------
+
+Comparando TCN x AutoETS:
+	- Amostras (n): 72
+	- Média Erro TCN: 19234.4844
+	- Média Erro AutoETS: 14872.0377
+	- Estatística Z/W: 1157.0000
+	- Valor-p (p-value): 0.3783
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando TCN x Prophet:
+	- Amostras (n): 72
+	- Média Erro TCN: 19234.4844
+	- Média Erro Prophet: 9738.6275
+	- Estatística Z/W: 328.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): Prophet
+----------------------------------------
+
+Comparando AutoARIMA x AutoETS:
+	- Amostras (n): 72
+	- Média Erro AutoARIMA: 10124.4553
+	- Média Erro AutoETS: 14872.0377
+	- Estatística Z/W: 28.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): AutoARIMA
+----------------------------------------
+
+Comparando AutoARIMA x Prophet:
+	- Amostras (n): 72
+	- Média Erro AutoARIMA: 10124.4553
+	- Média Erro Prophet: 9738.6275
+	- Estatística Z/W: 1028.0000
+	- Valor-p (p-value): 0.1085
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando AutoETS x Prophet:
+	- Amostras (n): 72
+	- Média Erro AutoETS: 14872.0377
+	- Média Erro Prophet: 9738.6275
+	- Estatística Z/W: 2.0000
+	- Valor-p (p-value): 0.0000
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): Prophet
+----------------------------------------
+
+========================================
+=== Analisando: Erro Absoluto - Cliente ===
+========================================
+
+
+Comparando XGBoost x CatBoost:
+	- Amostras (n): 99
+	- Média Erro XGBoost: 826.8115
+	- Média Erro CatBoost: 529.9655
+	- Estatística Z/W: 1927.0000
+	- Valor-p (p-value): 0.0558
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando XGBoost x LSTM:
+	- Amostras (n): 99
+	- Média Erro XGBoost: 826.8115
+	- Média Erro LSTM: 516.2431
+	- Estatística Z/W: 2100.0000
+	- Valor-p (p-value): 0.1906
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando XGBoost x TCN:
+	- Amostras (n): 99
+	- Média Erro XGBoost: 826.8115
+	- Média Erro TCN: 527.7506
+	- Estatística Z/W: 2457.0000
+	- Valor-p (p-value): 0.9499
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando XGBoost x AutoARIMA:
+	- Amostras (n): 99
+	- Média Erro XGBoost: 826.8115
+	- Média Erro AutoARIMA: 520.7421
+	- Estatística Z/W: 2252.0000
+	- Valor-p (p-value): 0.4364
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando XGBoost x AutoETS:
+	- Amostras (n): 99
+	- Média Erro XGBoost: 826.8115
+	- Média Erro AutoETS: 525.2971
+	- Estatística Z/W: 2356.0000
+	- Valor-p (p-value): 0.6779
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando XGBoost x Prophet:
+	- Amostras (n): 99
+	- Média Erro XGBoost: 826.8115
+	- Média Erro Prophet: 489.0797
+	- Estatística Z/W: 1833.0000
+	- Valor-p (p-value): 0.0250
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): Prophet
+----------------------------------------
+
+Comparando CatBoost x LSTM:
+	- Amostras (n): 99
+	- Média Erro CatBoost: 529.9655
+	- Média Erro LSTM: 516.2431
+	- Estatística Z/W: 2314.0000
+	- Valor-p (p-value): 0.5742
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando CatBoost x TCN:
+	- Amostras (n): 99
+	- Média Erro CatBoost: 529.9655
+	- Média Erro TCN: 527.7506
+	- Estatística Z/W: 1761.0000
+	- Valor-p (p-value): 0.0127
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): TCN
+----------------------------------------
+
+Comparando CatBoost x AutoARIMA:
+	- Amostras (n): 99
+	- Média Erro CatBoost: 529.9655
+	- Média Erro AutoARIMA: 520.7421
+	- Estatística Z/W: 2271.0000
+	- Valor-p (p-value): 0.4765
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando CatBoost x AutoETS:
+	- Amostras (n): 99
+	- Média Erro CatBoost: 529.9655
+	- Média Erro AutoETS: 525.2971
+	- Estatística Z/W: 2005.0000
+	- Valor-p (p-value): 0.1009
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando CatBoost x Prophet:
+	- Amostras (n): 99
+	- Média Erro CatBoost: 529.9655
+	- Média Erro Prophet: 489.0797
+	- Estatística Z/W: 2180.0000
+	- Valor-p (p-value): 0.3032
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando LSTM x TCN:
+	- Amostras (n): 99
+	- Média Erro LSTM: 516.2431
+	- Média Erro TCN: 527.7506
+	- Estatística Z/W: 1829.0000
+	- Valor-p (p-value): 0.0242
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): LSTM
+----------------------------------------
+
+Comparando LSTM x AutoARIMA:
+	- Amostras (n): 99
+	- Média Erro LSTM: 516.2431
+	- Média Erro AutoARIMA: 520.7421
+	- Estatística Z/W: 2368.0000
+	- Valor-p (p-value): 0.7088
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando LSTM x AutoETS:
+	- Amostras (n): 99
+	- Média Erro LSTM: 516.2431
+	- Média Erro AutoETS: 525.2971
+	- Estatística Z/W: 2163.0000
+	- Valor-p (p-value): 0.2762
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando LSTM x Prophet:
+	- Amostras (n): 99
+	- Média Erro LSTM: 516.2431
+	- Média Erro Prophet: 489.0797
+	- Estatística Z/W: 2084.0000
+	- Valor-p (p-value): 0.1723
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando TCN x AutoARIMA:
+	- Amostras (n): 99
+	- Média Erro TCN: 527.7506
+	- Média Erro AutoARIMA: 520.7421
+	- Estatística Z/W: 2236.0000
+	- Valor-p (p-value): 0.4042
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando TCN x AutoETS:
+	- Amostras (n): 99
+	- Média Erro TCN: 527.7506
+	- Média Erro AutoETS: 525.2971
+	- Estatística Z/W: 2449.0000
+	- Valor-p (p-value): 0.9277
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando TCN x Prophet:
+	- Amostras (n): 99
+	- Média Erro TCN: 527.7506
+	- Média Erro Prophet: 489.0797
+	- Estatística Z/W: 2026.0000
+	- Valor-p (p-value): 0.1171
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando AutoARIMA x AutoETS:
+	- Amostras (n): 99
+	- Média Erro AutoARIMA: 520.7421
+	- Média Erro AutoETS: 525.2971
+	- Estatística Z/W: 2154.0000
+	- Valor-p (p-value): 0.2626
+	-> Resultado: Sem diferença estatisticamente significativa (p >= 0.05).
+----------------------------------------
+
+Comparando AutoARIMA x Prophet:
+	- Amostras (n): 99
+	- Média Erro AutoARIMA: 520.7421
+	- Média Erro Prophet: 489.0797
+	- Estatística Z/W: 1879.0000
+	- Valor-p (p-value): 0.0375
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): Prophet
+----------------------------------------
+
+Comparando AutoETS x Prophet:
+	- Amostras (n): 99
+	- Média Erro AutoETS: 525.2971
+	- Média Erro Prophet: 489.0797
+	- Estatística Z/W: 1753.0000
+	- Valor-p (p-value): 0.0117
+	-> Resultado: Diferença ESTATISTICAMENTE SIGNIFICATIVA (p < 0.05).
+	-> Melhor modelo (pelo menor erro): Prophet
+----------------------------------------
