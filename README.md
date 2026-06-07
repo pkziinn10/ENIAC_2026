@@ -124,8 +124,12 @@ revenue_estimate/
     ├── treinamento_modelos_DL.ipynb        # DL models (BlockRNN/LSTM, TCN via Darts)
     ├── LLMs.ipynb                          # LLMs evaluation
     ├── teste_wilcoxon.ipynb                # Wilcoxon signed-rank statistical test
+    ├── analise_shap.ipynb                  # SHAP values analysis and visualizations
     ├── xlsx_to_csv.ipynb                   # Utility for data conversion
     ├── requirements.txt                    # Python dependencies
+    ├── figuras/                            # Exported charts and figures
+    │   ├── shap_summary_*.pdf              # SHAP summary plots in PDF format
+    │   └── shap_bar_*.pdf                  # SHAP bar plots (mean impact) in PDF format
     ├── data/
     │   ├── product.csv                     # Daily series aggregated by product
     │   ├── country.csv                     # Daily series aggregated by country
@@ -174,6 +178,7 @@ pip install -r requirements.txt
 6. `treinamento_modelos_DL.ipynb` -- Trains BlockRNN (LSTM) and TCN via Darts.
 7. `LLMs.ipynb` -- Evaluates LLMs approach.
 8. `teste_wilcoxon.ipynb` -- Executes the statistical hypothesis tests between the best models.
+9. `analise_shap.ipynb` -- Performs SHAP analysis to explain feature impact and exports plots as PDFs.
 
 ---
 
