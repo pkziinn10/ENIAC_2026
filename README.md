@@ -79,32 +79,46 @@ Both neural architectures receive exogenous features as `past_covariates` and un
 
 The table below consolidates the performance metrics (MAE and RMSE) obtained under the holdout evaluation protocol described in the article:
 
-| Model      | Category         | Series   | MAE        | RMSE      |
-|------------|------------------|----------|------------|-----------|
-| AutoARIMA  | Statistical      | Product  | 97.82      | 120.80    |
-| AutoARIMA  | Statistical      | Country  | 6,865.28   | 8,313.52  |
-| AutoARIMA  | Statistical      | Customer | 610.62     | 672.19    |
-| AutoETS    | Statistical      | Product  | 125.32     | 146.55    |
-| AutoETS    | Statistical      | Country  | 6,872.95   | 8,319.82  |
-| AutoETS    | Statistical      | Customer | 522.39     | 591.22    |
-| XGBoost    | Machine Learning | Product  | 97.20      | 119.92    |
-| XGBoost    | Machine Learning | Country  | 2,276.79   | 2,945.49  |
-| XGBoost    | Machine Learning | Customer | 93.29      | 218.07    |
-| CatBoost   | Machine Learning | Product  | 94.20      | 117.33    |
-| CatBoost   | Machine Learning | Country  | 2,339.87   | 3,046.38  |
-| CatBoost   | Machine Learning | Customer | 99.23      | 237.82    |
-| TCN        | Deep Learning    | Product  | 97.29      | 122.07    |
-| TCN        | Deep Learning    | Country  | 3,704.56   | 4,712.20  |
-| TCN        | Deep Learning    | Customer | 475.44     | 665.59    |
-| LSTM       | Deep Learning    | Product  | 95.32      | 117.96    |
-| LSTM       | Deep Learning    | Country  | 4,096.80   | 5,298.72  |
-| LSTM       | Deep Learning    | Customer | 394.62     | 556.97    |
+| Model              | Category         | Series   | MAE        | RMSE       |
+|--------------------|------------------|----------|------------|------------|
+| Naive              | Baseline         | Product  | 126.48     | 152.76     |
+| Naive              | Baseline         | Country  | 14,876.28  | 16,097.39  |
+| Naive              | Baseline         | Customer | 529.08     | 911.40     |
+| SeasonalNaive      | Baseline         | Product  | 127.02     | 151.57     |
+| SeasonalNaive      | Baseline         | Country  | 13,028.78  | 14,979.66  |
+| SeasonalNaive      | Baseline         | Customer | 595.89     | 936.62     |
+| AutoARIMA          | Statistical      | Product  | 97.82      | 120.80     |
+| AutoARIMA          | Statistical      | Country  | 6,865.28   | 8,313.52   |
+| AutoARIMA          | Statistical      | Customer | 610.62     | 672.19     |
+| AutoETS            | Statistical      | Product  | 125.32     | 146.55     |
+| AutoETS            | Statistical      | Country  | 6,872.95   | 8,319.82   |
+| AutoETS            | Statistical      | Customer | 522.39     | 591.22     |
+| XGBoost            | Machine Learning | Product  | 97.20      | 119.92     |
+| XGBoost            | Machine Learning | Country  | 2,276.79   | 2,945.49   |
+| XGBoost            | Machine Learning | Customer | 93.29      | 218.07     |
+| CatBoost           | Machine Learning | Product  | 94.20      | 117.33     |
+| CatBoost           | Machine Learning | Country  | 2,339.87   | 3,046.38   |
+| CatBoost           | Machine Learning | Customer | 99.23      | 237.82     |
+| TCN                | Deep Learning    | Product  | 97.29      | 122.07     |
+| TCN                | Deep Learning    | Country  | 3,704.56   | 4,712.20   |
+| TCN                | Deep Learning    | Customer | 475.44     | 665.59     |
+| LSTM               | Deep Learning    | Product  | 95.32      | 117.96     |
+| LSTM               | Deep Learning    | Country  | 4,096.80   | 5,298.72   |
+| LSTM               | Deep Learning    | Customer | 394.62     | 556.97     |
+| Mistral Medium 3.5 | LLM              | Product  | 93.82      | 118.49     |
+| Mistral Medium 3.5 | LLM              | Country  | 6,336.18   | 8,049.76   |
+| Mistral Medium 3.5 | LLM              | Customer | 550.94     | 919.84     |
+| Qwen 3.5 397B      | LLM              | Product  | 135.64     | 170.26     |
+| Qwen 3.5 397B      | LLM              | Country  | 7,366.13   | 9,045.81   |
+| Qwen 3.5 397B      | LLM              | Customer | 558.36     | 944.07     |
 
 ### Key Findings
 
 - **Machine Learning models** (XGBoost, CatBoost) achieved the lowest MAE across practically all granularity levels, dominating especially in the Country and Customer series. This demonstrates their capability in capturing non-linear relationships and efficiently handling the engineered tabular features.
 - **Deep Learning models** (TCN, LSTM) showed highly competitive performance, closely following the tree-based models and outperforming classical statistical approaches.
+- **LLMs** (Mistral Medium 3.5, Qwen 3.5 397B) presented mixed results: Mistral Medium 3.5 achieved competitive performance in the Product series, closely matching ML models, while Qwen 3.5 showed weaker generalization.
 - **Statistical models** (AutoARIMA, AutoETS) struggled to maintain parity, presenting the highest error metrics in the Country and Customer series, suggesting that simple univariate temporal patterns are insufficient compared to rich feature sets.
+- **Baseline models** (Naive, SeasonalNaive) exhibited the highest errors overall, confirming the value of more sophisticated approaches.
 
 ---
 
@@ -117,37 +131,38 @@ revenue_estimate/
 └── src/
     ├── limpeza_de_dados.ipynb              # Data cleaning and preprocessing
     ├── engenharia_de_atributos.ipynb       # Feature engineering (SHAP-guided, leakage-free)
-    ├── analise_exploratoria.Rmd            # Exploratory Data Analysis
-    ├── treinamento_naive.ipynb             # Baseline naive models
+    ├── analise_exploratoria.Rmd            # Exploratory Data Analysis (R Markdown)
+    ├── treinamento_naive.ipynb             # Baseline naive models (Naive, SeasonalNaive)
     ├── treinamento_estatisticos.ipynb      # Statistical models (AutoARIMA, AutoETS via sktime)
     ├── treinamento_modelos_ML.ipynb        # ML models (XGBoost, CatBoost + Optuna)
     ├── treinamento_modelos_DL.ipynb        # DL models (BlockRNN/LSTM, TCN via Darts)
-    ├── LLMs.ipynb                          # LLMs evaluation
+    ├── LLMs.ipynb                          # LLMs evaluation (Mistral, Qwen)
     ├── teste_wilcoxon.ipynb                # Wilcoxon signed-rank statistical test
     ├── analise_shap.ipynb                  # SHAP values analysis and visualizations
     ├── xlsx_to_csv.ipynb                   # Utility for data conversion
     ├── requirements.txt                    # Python dependencies
     ├── figuras/                            # Exported charts and figures
-    │   ├── shap_summary_*.pdf              # SHAP summary plots in PDF format
-    │   └── shap_bar_*.pdf                  # SHAP bar plots (mean impact) in PDF format
+    │   ├── produto.pdf, pais.pdf, cliente.pdf          # Time series plots
+    │   ├── *_acf_pacf.pdf                              # ACF/PACF autocorrelation plots
+    │   ├── *_stl.pdf                                   # STL decomposition plots
+    │   ├── top_20_*.pdf                                # Top-20 ranking charts
+    │   ├── shap_summary_*.pdf                          # SHAP summary plots
+    │   └── shap_bar_*.pdf                              # SHAP bar plots (mean impact)
     ├── data/
+    │   ├── online_retail_II.xlsx           # Original raw dataset
+    │   ├── online_retail_II.csv            # Raw dataset converted to CSV
+    │   ├── cleaned_online_retail_II.csv    # Cleaned transactional data
     │   ├── product.csv                     # Daily series aggregated by product
     │   ├── country.csv                     # Daily series aggregated by country
     │   └── customer.csv                    # Daily series aggregated by customer
-    ├── resultados/
-    │   ├── resultados_naive.csv            # Metrics and forecasts for Naive models
-    │   ├── resultados_estatisticos.csv     # Metrics and forecasts for Statistical models
-    │   ├── resultados_ML.csv               # Metrics and forecasts for ML models
-    │   ├── resultados_DL.csv               # Metrics and forecasts for DL models
-    │   ├── resultados_LLMs.csv             # Metrics and forecasts for LLMs
-    │   ├── resultados_medias_LLMs.csv      # Average metrics for LLMs
-    │   └── resultado_wilcoxon.txt          # Statistical significance comparisons
-    └── models/
-        └── result_pkl/
-            ├── xgb_*.pkl                   # Serialized XGBoost models
-            ├── cat_*.pkl                   # Serialized CatBoost models
-            ├── lstm_*.pt                   # Serialized LSTM models (PyTorch)
-            └── tcn_*.pt                    # Serialized TCN models (PyTorch)
+    └── resultados/
+        ├── resultados_naive.csv            # Metrics and forecasts for Naive models
+        ├── resultados_estatisticos.csv     # Metrics and forecasts for Statistical models
+        ├── resultados_ML.csv               # Metrics and forecasts for ML models
+        ├── resultados_DL.csv               # Metrics and forecasts for DL models
+        ├── resultados_LLMs.csv             # Metrics and forecasts for LLMs
+        ├── resultados_medias_LLMs.csv      # Average metrics for LLMs
+        └── resultados_wilcoxon.csv         # Statistical significance comparisons
 ```
 
 ---
